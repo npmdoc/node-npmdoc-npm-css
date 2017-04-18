@@ -1,0 +1,272 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/shtylman/npm-css#readme">npm-css (v0.2.3)</a>
+</h1>
+<h4>Require css from npm</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.npm-css">module npm-css</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.npm-css.npm-css">
+            function <span class="apidocSignatureSpan"></span>npm-css
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.npm-css.prefix">
+            function <span class="apidocSignatureSpan">npm-css.</span>prefix
+            <span class="apidocSignatureSpan">(name, tree)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.npm-css.toString">
+            function <span class="apidocSignatureSpan">npm-css.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.npm-css.prefix">module npm-css.prefix</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.npm-css.prefix.prefix">
+            function <span class="apidocSignatureSpan">npm-css.</span>prefix
+            <span class="apidocSignatureSpan">(name, tree)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.npm-css.toString">module npm-css.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.npm-css.toString.toString">
+            function <span class="apidocSignatureSpan">npm-css.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.npm-css" id="apidoc.module.npm-css">module npm-css</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.npm-css.npm-css" id="apidoc.element.npm-css.npm-css">
+        function <span class="apidocSignatureSpan"></span>npm-css
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">npm-css = function (file) {
+    return cssp.translate(flatten(file, []));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.npm-css.prefix" id="apidoc.element.npm-css.prefix">
+        function <span class="apidocSignatureSpan">npm-css.</span>prefix
+        <span class="apidocSignatureSpan">(name, tree)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function prefix(name, tree) {
+    traverse(tree).forEach(function (node) {
+        if (node !== 'simpleselector') {
+            return;
+        }
+
+        var nodes = this.parent.node;
+
+        // don't prefix if any of the following conditions are met:
+        // .module exists as a parent then ok
+        // .module exists in a set of classes right after an element
+        // .module exists in the first set of classes
+        for (var i=1 ; i&lt;nodes.length ; ++i) {
+            var node = nodes[i];
+
+            // first space exists search
+            if (node[0] === 's') {
+                break;
+            }
+
+            if (node[0] === 'clazz' &amp;&amp; node[1][0] === 'ident' &amp;&amp;
+                node[1][1] === name) {
+                return;
+            }
+        }
+
+        // prefix the css rule
+        this.parent.node.splice(1, 0,
+            [ 'clazz', [ 'ident', name ] ],
+            [ 's', ' ' ]
+        );
+    });
+
+    return tree;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.npm-css.toString" id="apidoc.element.npm-css.toString">
+        function <span class="apidocSignatureSpan">npm-css.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.npm-css.prefix" id="apidoc.module.npm-css.prefix">module npm-css.prefix</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.npm-css.prefix.prefix" id="apidoc.element.npm-css.prefix.prefix">
+        function <span class="apidocSignatureSpan">npm-css.</span>prefix
+        <span class="apidocSignatureSpan">(name, tree)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function prefix(name, tree) {
+    traverse(tree).forEach(function (node) {
+        if (node !== 'simpleselector') {
+            return;
+        }
+
+        var nodes = this.parent.node;
+
+        // don't prefix if any of the following conditions are met:
+        // .module exists as a parent then ok
+        // .module exists in a set of classes right after an element
+        // .module exists in the first set of classes
+        for (var i=1 ; i&lt;nodes.length ; ++i) {
+            var node = nodes[i];
+
+            // first space exists search
+            if (node[0] === 's') {
+                break;
+            }
+
+            if (node[0] === 'clazz' &amp;&amp; node[1][0] === 'ident' &amp;&amp;
+                node[1][1] === name) {
+                return;
+            }
+        }
+
+        // prefix the css rule
+        this.parent.node.splice(1, 0,
+            [ 'clazz', [ 'ident', name ] ],
+            [ 's', ' ' ]
+        );
+    });
+
+    return tree;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.npm-css.toString" id="apidoc.module.npm-css.toString">module npm-css.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.npm-css.toString.toString" id="apidoc.element.npm-css.toString.toString">
+        function <span class="apidocSignatureSpan">npm-css.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
