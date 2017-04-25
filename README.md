@@ -1,4 +1,7 @@
-# api documentation for  [npm-css (v0.2.3)](https://github.com/shtylman/npm-css#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-npm-css.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-npm-css) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-npm-css.svg)](https://travis-ci.org/npmdoc/node-npmdoc-npm-css)
+# npmdoc-npm-css
+
+#### basic api documentation for  [npm-css (v0.2.3)](https://github.com/shtylman/npm-css#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-npm-css.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-npm-css) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-npm-css.svg)](https://travis-ci.org/npmdoc/node-npmdoc-npm-css)
+
 #### Require css from npm
 
 [![NPM](https://nodei.co/npm/npm-css.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/npm-css)
